@@ -1,0 +1,26 @@
+
+	<table class="calendar">
+		<thead>
+			<tr class="navigation">
+				<th><a href="#">&laquo;</a></th>
+				<th colspan="5">{{ header }}</th>
+				<th><a href="#">&raquo;</a></th>
+			</tr>
+			<tr>
+				{% for day in days_of_week %}
+					<th>{{ day }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in cells %}
+				<tr>
+					{% for cell in row %}
+						<td>
+							{{ cell }}
+						</td>
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
