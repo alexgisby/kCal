@@ -140,11 +140,10 @@ class kCal_Core
 	 *
 	 * @param 	string 	strtotime friendly version of the start date
 	 * @param 	string 	strtotime friendly version of the end date.
-	 * @param 	string 	event name
-	 * @param 	string 	url for the event (optional)
+	 * @param 	array 	Data to pass to the calendar for this event.
 	 * @return 	this
 	 */
-	public function add_event($start_date, $end_date, $event_title, $event_url)
+	public function add_event($start_date, $end_date, $data = array())
 	{
 		// Loop through all of the days in this event, adding them into the array:
 		$start_ts 	= strtotime($start_date);
@@ -158,10 +157,7 @@ class kCal_Core
 			$curr_month = date('m', $curr_ts);
 			$curr_year = date('Y', $curr_ts);
 			
-			$this->events[(int)$curr_year][(int)$curr_month][(int)$curr_day][] = array(
-					'title'	=> $event_title,
-					'url'	=> $event_url,
-			);
+			$this->events[(int)$curr_year][(int)$curr_month][(int)$curr_day][] = $data;
 			
 			$curr_ts += 60 * 60 * 24;
 		}
