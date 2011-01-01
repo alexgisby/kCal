@@ -107,19 +107,28 @@ class kCal_Core
 		
 		$this->prepare_cells();
 		
+		// Parse the previous and next URL links;
+		$next_month 	= date('n', strtotime('+1 Month', $this->timestamp));
+		$next_year 		= date('Y', strtotime('+1 Month', $this->timestamp));
+		$prev_month		= date('n', strtotime('-1 Month', $this->timestamp));
+		$prev_year		= date('Y', strtotime('-1 Month', $this->timestamp));
+		
+		$prev_month_link = url::site(str_replace(array('{PREV_MONTH}', '{PREV_YEAR}'), array($prev_month, $prev_year), $this->options['prev_month_format']));
+		$next_month_link = url::site(str_replace(array('{NEXT_MONTH}', '{NEXT_YEAR}'), array($next_month, $next_year), $this->options['next_month_format']));
+		
 		$view_sys_name = $this->options['view_system'];
 		$view = $view_sys_name::factory('kcal/' . $this->options['view'])->set(array(
-				'days_of_week'	=> $this->days_of_week,
-				'cells'			=> $this->cells,
-				'header'		=> date('F Y', $this->timestamp),
-				'current_day'	=> $this->current_day,
-				'current_month'	=> $this->current_month,
-				'current_year'	=> $this->current_year,
-				'today_day'		=> date('j'),
-				'today_month'	=> date('n'),
-				'today_year'	=> date('Y'),
-				'next_query_string'	=> '?month=' . date('n', strtotime('+1 Month', $this->timestamp)) . '&year=' . date('Y', strtotime('+1 Month', $this->timestamp)),
-				'prev_query_string' => '?month=' . date('n', strtotime('-1 Month', $this->timestamp)) . '&year=' . date('Y', strtotime('-1 Month', $this->timestamp)),
+				'days_of_week'		=> $this->days_of_week,
+				'cells'				=> $this->cells,
+				'header'			=> date($this->options['header_format'], $this->timestamp),
+				'current_day'		=> $this->current_day,
+				'current_month'		=> $this->current_month,
+				'current_year'		=> $this->current_year,
+				'today_day'			=> date('j'),
+				'today_month'		=> date('n'),
+				'today_year'		=> date('Y'),
+				'next_month_link'	=> $next_month_link,
+				'prev_month_link' 	=> $prev_month_link,
 			));
 			
 		$view->set($extra);

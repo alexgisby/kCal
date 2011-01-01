@@ -28,4 +28,11 @@ return array(
 	 */
 	'prev_month_format' => '?month={PREV_MONTH}&year={PREV_YEAR}',
 	
+	/**
+	 * Format for the header of the Calendar
+	 */
+	'header_format'		=> 'F Y',
+	
+	
+	
 );
