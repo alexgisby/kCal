@@ -76,11 +76,11 @@ class kCal_Core
 		}
 		else
 		{
-			$this->current_day 		= ($day !== false)? $day : date('j');
+			$this->current_day 		= ($day !== false)? (int)$day : date('j');
 		}
 		
-		$this->current_month	= ($month !== false)? $month : date('n');
-		$this->current_year		= ($year !== false)? $year : date('Y');
+		$this->current_month	= ($month !== false)? (int)$month : date('n');
+		$this->current_year		= ($year !== false)? (int)$year : date('Y');
 		
 		$this->timestamp		= strtotime($this->current_year . '-' . str_pad($this->current_month, 2, '0', STR_PAD_LEFT) . '-' . str_pad($this->current_day, 2, '0', STR_PAD_LEFT));
 		
