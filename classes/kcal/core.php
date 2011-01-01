@@ -176,9 +176,9 @@ class kCal_Core
 		
 		while($curr_ts <= $end_ts)
 		{
-			$curr_day = date('j', $curr_ts);
+			$curr_day 	= date('j', $curr_ts);
 			$curr_month = date('m', $curr_ts);
-			$curr_year = date('Y', $curr_ts);
+			$curr_year 	= date('Y', $curr_ts);
 			
 			$this->events[(int)$curr_year][(int)$curr_month][(int)$curr_day][] = $data;
 			
@@ -254,5 +254,21 @@ class kCal_Core
 		
 		return $this;
 		
+	}
+	
+	
+	/**
+	 * ------------------ Some getters that you might want ----------------------------------
+	 */
+	
+	
+	/**
+	 * Get the Events for this calendar, which has the dates as keys and values. Probably useful.
+	 *
+	 * @return 	array 
+	 */
+	public function events()
+	{
+		return $this->events;
 	}
 }
