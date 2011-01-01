@@ -45,6 +45,11 @@ class kCal_Core
 	protected $events = array();
 	
 	/**
+	 * @var 	array 	Options to add to the calendar. Will overwrite the config file.
+	 */
+	protected $options = array();
+	
+	/**
 	 * Creates a new instance of the calendar. Optionally set the current date (if you don't, we use the current date)
 	 *
 	 * @param 	int 	Current Day
@@ -90,14 +95,20 @@ class kCal_Core
 	/**
 	 * Renders out the calendar.
 	 *
+	 * @param 	array 	Options for the render, like template etc.
 	 * @param 	array 	Extra variables to add to the template
 	 * @return 	string
 	 */
-	public function render(array $extra = array())
+	public function render($options = array(), array $extra = array())
 	{
+		// Deal with the options:
+		$options = (is_array($options))? $options : array();
+		$this->options = arr::merge(kohana::config('kcal')->as_array(), $options);
+		
 		$this->prepare_cells();
 		
-		$view = Twig::factory('kcal/calendar')->set(array(
+		$view_sys_name = $this->options['view_system'];
+		$view = $view_sys_name::factory('kcal/' . $this->options['view'])->set(array(
 				'days_of_week'	=> $this->days_of_week,
 				'cells'			=> $this->cells,
 				'header'		=> date('F Y', $this->timestamp),
@@ -176,7 +187,7 @@ class kCal_Core
 		// Ok, first things first, work out some basic info about the current date:
 		$days_in_month 			= date('t', $this->timestamp);
 		$first_day_in_month		= date('D', strtotime($this->current_year . '-' . $this->current_month . '-1'));
-		$this->days_of_week		= explode(',', kohana::config('kcal')->days_of_week);
+		$this->days_of_week		= explode(',', $this->options['days_of_week']);
 		foreach($this->days_of_week as &$doftw)
 		{	$doftw = trim($doftw);		}
 				
