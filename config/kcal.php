@@ -17,22 +17,20 @@ return array(
 	 */
 	'view_system'	=> 'Twig',
 	
-	
 	/**
-	 * Format for the Next Month url
+	 * Format to use for URL's.
 	 */
-	'next_month_format'	=> '?month={NEXT_MONTH}&year={NEXT_YEAR}',
-	
-	/**
-	 * Format for the Previous Month url
-	 */
-	'prev_month_format' => '?month={PREV_MONTH}&year={PREV_YEAR}',
+	'month_url_format'	=> '?year={YEAR}&month={MONTH}',
+	// 'month_url_format' => '{YEAR}/{MONTH}',		Alternate format
 	
 	/**
 	 * Format for the header of the Calendar
 	 */
 	'header_format'		=> 'F Y',
 	
-	
+	/**
+	 * Boolean to toggle the "Today" button
+	 */
+	'show_today'		=> true,
 	
 );

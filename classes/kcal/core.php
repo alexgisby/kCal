@@ -113,8 +113,9 @@ class kCal_Core
 		$prev_month		= date('n', strtotime('-1 Month', $this->timestamp));
 		$prev_year		= date('Y', strtotime('-1 Month', $this->timestamp));
 		
-		$prev_month_link = url::site(str_replace(array('{PREV_MONTH}', '{PREV_YEAR}'), array($prev_month, $prev_year), $this->options['prev_month_format']));
-		$next_month_link = url::site(str_replace(array('{NEXT_MONTH}', '{NEXT_YEAR}'), array($next_month, $next_year), $this->options['next_month_format']));
+		$prev_month_link 	= url::site(str_replace(array('{MONTH}', '{YEAR}'), array($prev_month, $prev_year), $this->options['month_url_format']));
+		$next_month_link 	= url::site(str_replace(array('{MONTH}', '{YEAR}'), array($next_month, $next_year), $this->options['month_url_format']));
+		$today_link 		= url::site(str_replace(array('{MONTH}', '{YEAR}'), array(date('n'), date('Y')), $this->options['month_url_format']));
 		
 		$view_sys_name = $this->options['view_system'];
 		$view = $view_sys_name::factory('kcal/' . $this->options['view'])->set(array(
@@ -129,6 +130,8 @@ class kCal_Core
 				'today_year'		=> date('Y'),
 				'next_month_link'	=> $next_month_link,
 				'prev_month_link' 	=> $prev_month_link,
+				'today_link'		=> $today_link,
+				'show_today'		=> $this->options['show_today'],
 			));
 			
 		$view->set($extra);
