@@ -3,10 +3,14 @@
 	
 	{% block content %}
 		
-		<h1>Basic Usage</h1>
-		
+		<h1>Basic Usage (Today)</h1>
 		{% autoescape off %}
 			{{ basic_calendar }}
+		{% endautoescape %}
+		
+		<h1>With a specific date</h1>
+		{% autoescape off %}
+			{{ date_calendar }}
 		{% endautoescape %}
 		
 	{% endblock %}
