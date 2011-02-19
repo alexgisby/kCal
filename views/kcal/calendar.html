@@ -16,9 +16,7 @@
 			{% for row in cells %}
 				<tr>
 					{% for cell in row %}
-						<td>
-							{{ cell }}
-						</td>
+						{% include 'kcal/cell.html' %}
 					{% endfor %}
 				</tr>
 			{% endfor %}

@@ -1,0 +1,11 @@
+
+	<td {% if cell.idx != '' %}id="cell_{{ cell.idx }}" class="cell_is_day {% if cell.today %}today{% endif %}"{% endif %}>
+		{{ cell.idx }}
+		{% if cell.has_events %}
+			<div class="events">
+			{% for event in cell.events %}
+				<a href="{{ event.url }}" title="{{ event.long_title }}" id="tip_trigger_{{ cell.idx }}" class="tip_trigger calendar_event {{ event.style }}">{{ event.title }}</a>
+			{% endfor %}
+			</div>
+		{% endif %}
+	</td>
