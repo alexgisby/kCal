@@ -13,4 +13,9 @@
 			{{ date_calendar }}
 		{% endautoescape %}
 		
+		<h1>With events</h1>
+		{% autoescape off %}
+			{{ event_calendar }}
+		{% endautoescape %}
+		
 	{% endblock %}

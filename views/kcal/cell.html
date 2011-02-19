@@ -4,7 +4,7 @@
 		{% if cell.has_events %}
 			<div class="events">
 			{% for event in cell.events %}
-				<a href="{{ event.url }}" title="{{ event.long_title }}" id="tip_trigger_{{ cell.idx }}" class="tip_trigger calendar_event {{ event.style }}">{{ event.title }}</a>
+				<a href="{{ event.url }}" class="calendar_event {{ event.style }}">{{ event.title }}</a>
 			{% endfor %}
 			</div>
 		{% endif %}
