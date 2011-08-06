@@ -1,6 +1,6 @@
 # kCal
 
-Calendar extension for Kohana 3.
+Calendar extension for Kohana 3.x (3.0.x, 3.1.x and 3.2.x).
 
 ## Features
 
@@ -10,7 +10,7 @@ Calendar extension for Kohana 3.
 
 ## Requirements;
 
-**This class uses Twig (https://github.com/jonathangeiger/kohana-twig) to do the templating. I'll probably add in Kohana View support one day**
+kCal can use either Kohana's native Views or [Twig](https://github.com/alexgisby/kohana-twig)
 
 ## Usage
 

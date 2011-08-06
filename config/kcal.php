@@ -15,7 +15,7 @@ return array(
 	/**
 	 * View system to use (Twig, or View usually)
 	 */
-	'view_system'	=> 'Twig',
+	'view_system'	=> 'View',
 	
 	/**
 	 * Format to use for URL's.

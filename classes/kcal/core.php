@@ -50,6 +50,11 @@ class kCal_Core
 	protected $options = array();
 	
 	/**
+	 * @var 	Config	Config options for this calendar
+	 */
+	protected $config;
+	
+	/**
 	 * Creates a new instance of the calendar. Optionally set the current date (if you don't, we use the current date)
 	 *
 	 * @param 	int 	Current Day
@@ -59,7 +64,8 @@ class kCal_Core
 	 */
 	public function __construct($day = false, $month = false, $year = false)
 	{
-		$this->set_current_date($day, $month, $year);
+		$this->set_current_date($day, $month, $year);		
+		$this->config = (version_compare(kohana::VERSION, '3.2.0', '>='))? kohana::$config->load('kcal') : kohana::config('kcal');
 	}
 	
 	
@@ -103,7 +109,7 @@ class kCal_Core
 	{
 		// Deal with the options:
 		$options = (is_array($options))? $options : array();
-		$this->options = arr::merge(kohana::config('kcal')->as_array(), $options);
+		$this->options = arr::merge($this->config->as_array(), $options);
 		
 		$this->prepare_cells();
 		

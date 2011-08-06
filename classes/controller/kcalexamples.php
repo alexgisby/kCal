@@ -9,8 +9,10 @@
  */
 
 
-class Controller_Kcalexamples extends Controller_Template_Twig
+class Controller_Kcalexamples extends Controller_Template
 {
+	public $template = 'kcalexamples';
+	
 	/**
 	 * Basic examples
 	 */
