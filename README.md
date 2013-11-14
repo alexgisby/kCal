@@ -15,3 +15,7 @@ kCal can use either Kohana's native Views or [Twig](https://github.com/alexgisby
 ## Usage
 
 See the controllers/kcalexamples.php for usage of the classage.
+
+## License
+
+This software is open sourced under the [MIT License](http://en.wikipedia.org/wiki/MIT_license).
